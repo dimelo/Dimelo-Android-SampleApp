@@ -33,13 +33,14 @@ android.buildTypes.each { type ->
 
 repositories {
     maven {
-        url "https://raw.github.com/dimelo/Dimelo-Android/master"
+        url "https://raw.github.com/dimelo/Dimelo-Android/dev-1.1.4"
+//        url "file://Users/elhu/Workspace/dimelo/Dimelo-Android-Source/Dimelo-Android"
     }
 }
 
 dependencies {
     compile 'com.google.android.gms:play-services-gcm:8.1.0'
-    compile 'com.dimelo.dimelosdk:dimelosdk:1.1.3'
+    compile 'com.dimelo.dimelosdk:dimelosdk:1.1.4'
     compile 'com.google.android.gms:play-services-appindexing:8.1.0'
     compile 'com.android.support:appcompat-v7:23.1.0'
     compile 'com.android.support:design:23.3.0'
