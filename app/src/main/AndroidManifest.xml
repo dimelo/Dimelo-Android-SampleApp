@@ -12,13 +12,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <!-- Notifications -->
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-    <uses-permission android:name="com.dimelo.sampleapp.permission.C2D_MESSAGE" />
-
-    <permission
-        android:name="com.dimelo.sampleapp.permission.C2D_MESSAGE"
-        android:protectionLevel="signature" />
 
     <!-- opengles 2.0 for mapv2 -->
     <uses-feature
@@ -33,15 +27,18 @@
         android:theme="@style/Theme.MyTheme">
 
         <!-- Push Notifs -->
-        <receiver
-            android:name=".GcmBroadcastReceiver"
-            android:permission="com.google.android.c2dm.permission.SEND">
+        <service
+            android:name=".MyFcmInstanceIDListenerService">
             <intent-filter>
-                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-                <category android:name="com.dimelo.sampleapp" />
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
-        </receiver>
-        <service android:name=".GcmIntentService" />
+        </service>
+        <service
+            android:name=".MyFcmListenerService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
 
         <!-- Host Application Activities -->
         <activity

@@ -21,26 +21,26 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
 }
 
 //Edit those values in gradle.properties
 android.buildTypes.each { type ->
-    type.buildConfigField 'String', 'GCM_API_KEY', GCM_API_KEY
     type.buildConfigField 'String', 'DIMELO_SDK_SECRET', DIMELO_SDK_SECRET
 }
 
 repositories {
     maven {
-       url "file:///Users/elhu/Workspace/dimelo/Dimelo-Android-Source/Dimelo-Android"
+       url "file:///Users/cylix/Dimelo-Android"
     }
 }
 
 dependencies {
-    compile 'com.google.android.gms:play-services-gcm:8.1.0'
+    compile "com.google.firebase:firebase-messaging:9.4.0"
     compile 'com.dimelo.dimelosdk:dimelosdk:1.2.2.2'
     compile 'com.android.support:appcompat-v7:23.3.0'
     compile 'com.android.support:design:23.3.0'
     compile 'com.android.support:support-v4:23.3.0'
     compile 'com.android.support:recyclerview-v7:23.3.0'
 }
+
+apply plugin: 'com.google.gms.google-services'
