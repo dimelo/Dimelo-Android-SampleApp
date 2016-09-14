@@ -35,6 +35,8 @@ repositories {
 }
 
 dependencies {
+    compile 'com.google.android.gms:play-services-location:9.4.0'
+    compile 'com.google.android.gms:play-services-places:9.4.0'
     compile 'com.google.android.gms:play-services-maps:9.4.0'
     compile 'com.google.android.gms:play-services-gcm:9.4.0'
     compile "com.google.firebase:firebase-messaging:9.4.0"
@@ -45,3 +47,4 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:23.3.0'
 }
 
+apply plugin: 'com.google.gms.google-services'

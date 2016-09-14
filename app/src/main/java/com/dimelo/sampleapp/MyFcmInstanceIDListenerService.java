@@ -1,5 +1,7 @@
 package com.dimelo.sampleapp;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 
 import com.dimelo.dimelosdk.main.Dimelo;
@@ -21,9 +23,19 @@ public class MyFcmInstanceIDListenerService extends FirebaseInstanceIdService {
     @Override
     public void onTokenRefresh() {
         // Get updated InstanceID token.
-        String refreshedToken = FirebaseInstanceId.getInstance().getToken();
+        final String refreshedToken = FirebaseInstanceId.getInstance().getToken();
         Log.d("DEBUG", "Refreshed token: " + refreshedToken);
-        Dimelo.getInstance().setDeviceToken(refreshedToken);
+
+        Handler mainHandler = new Handler(this.getMainLooper());
+
+        Runnable myRunnable = new Runnable() {
+            @Override
+            public void run() {
+                Dimelo.getInstance().setDeviceToken(refreshedToken);
+            }
+        };
+        mainHandler.post(myRunnable);
+
     }
 
 }
