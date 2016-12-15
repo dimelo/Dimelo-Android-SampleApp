@@ -25,7 +25,7 @@ public class GcmIntentService extends IntentService {
             }
 
             else if (GoogleCloudMessaging.MESSAGE_TYPE_MESSAGE.equals(messageType)) {
-                MainActivity.setupDimelo(this);
+                MainActivity.setupDimelo(this, false);
                 if (Dimelo.consumeReceivedRemoteNotification(this, extras, null)){
                     // Cool !
                 }

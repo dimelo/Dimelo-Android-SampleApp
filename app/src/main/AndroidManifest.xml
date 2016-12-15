@@ -64,8 +64,11 @@
         <!-- Map API_KEY for Dimelo -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="ADD_YOUR_OWN_GEO_API_KEY" />
+            android:value="AIzaSyCuryLIPXQxkktYMA4dgAFQUdXnQGTMe0U" />
 
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="034f8a181cf9aa8334b802373bdf352e67027ca7" />
     </application>
 
 

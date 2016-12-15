@@ -71,6 +71,8 @@ public class TabTelecom extends Fragment implements SampleDimeloTab {
     }
 
     private void openChat(){
+        Dimelo.getInstance().setUserIdentifier("Tab Telecom");
+        Dimelo.getInstance().setUserName("Tab Telecom");
         mViewFlipper.setDisplayedChild(1);
         mDimeloChat.setUserVisibleHint(true);
     }

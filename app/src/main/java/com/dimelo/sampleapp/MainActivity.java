@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         registerInBackground();
 
         // Setup Dimelo
-        Dimelo dimelo = setupDimelo(this);
+        Dimelo dimelo = setupDimelo(this, true);
         dimelo.setDimeloListener(dimeloListener);
 
         FragmentManager supportFragmentManager = getSupportFragmentManager();
@@ -62,13 +62,23 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    static Dimelo setupDimelo(Context context) {
+    static Dimelo setupDimelo(Context context, Boolean setUserId) {
+        JSONObject foo = new JSONObject();
+        try {
+            foo.put("KEY", "VALUE\nWITH\nNEWLINE");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Log.v("FOO", foo.toString());
         String secret = BuildConfig.DIMELO_SDK_SECRET; //edit in gradle.properties
         Dimelo.setup(context);
         Dimelo dimelo = Dimelo.getInstance();
         dimelo.setApiSecret(secret);
         dimelo.setDebug(true);
-        dimelo.setUserName("John Doe");
+        if (setUserId) {
+            dimelo.setUserName("John Doe");
+            dimelo.setUserIdentifier("John Doe");
+        }
 
         JSONObject authInfo = new JSONObject();
         try {
